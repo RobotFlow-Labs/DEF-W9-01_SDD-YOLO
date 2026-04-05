@@ -1,0 +1,22 @@
+[data]
+root = "data/dronesod30k"
+train_split = "train.txt"
+val_split = "val.txt"
+test_split = "test.txt"
+image_size = 256
+num_classes = 1
+allow_synthetic = true
+
+[train]
+batch_size = 2
+epochs = 1
+max_steps = 5
+learning_rate = 0.0005
+weight_decay = 0.0001
+workers = 0
+device = "cpu"
+seed = 1
+save_every = 1
+output_dir = "artifacts-debug"
+optimizer = "sgd"
+stal_gamma = 1.0

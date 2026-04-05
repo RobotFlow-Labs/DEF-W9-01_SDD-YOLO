@@ -1,0 +1,10 @@
+services:
+  def-sdd-yolo:
+    build:
+      context: .
+      dockerfile: Dockerfile.serve
+    image: def-sdd-yolo:local
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1

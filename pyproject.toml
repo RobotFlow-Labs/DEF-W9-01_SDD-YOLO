@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "def-sdd-yolo"
+version = "0.1.0"
+description = "ANIMA DEF-sdd-yolo baseline implementation"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "AIFLOW LABS" }]
+dependencies = [
+  "numpy>=1.26",
+  "pillow>=10.0",
+  "pyyaml>=6.0",
+  "torch>=2.2",
+  "fastapi>=0.111",
+  "uvicorn>=0.30",
+  "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "httpx>=0.27",
+]
+
+[project.scripts]
+sdd-yolo-train = "sdd_yolo.train:main"
+sdd-yolo-infer = "sdd_yolo.infer:main"
+sdd-yolo-eval = "sdd_yolo.eval:main"
+sdd-yolo-serve = "sdd_yolo.serve:main"
+sdd-yolo-export = "sdd_yolo.export:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sdd_yolo"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,42 @@
+[data]
+root = "data/dronesod30k"
+train_split = "train.txt"
+val_split = "val.txt"
+test_split = "test.txt"
+image_size = 1024
+num_classes = 1
+allow_synthetic = false
+
+[model]
+name = "sdd_yolo_n"
+width_mult = 0.5
+depth_mult = 0.5
+use_p2_head = true
+use_dual_attention = true
+dfl_enabled = false
+nms_free = true
+
+[train]
+batch_size = 8
+epochs = 100
+max_steps = -1
+learning_rate = 0.0003
+weight_decay = 0.0001
+workers = 4
+device = "cuda"
+seed = 42
+save_every = 1
+output_dir = "artifacts"
+optimizer = "musgd"
+stal_gamma = 2.0
+
+[infer]
+conf_threshold = 0.25
+iou_threshold = 0.5
+max_detections = 300
+nms_free = true
+
+[distill]
+enabled = true
+lambda_weight = 0.5
+temperature = 3.0

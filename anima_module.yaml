@@ -1,0 +1,22 @@
+module:
+  id: DEF-sdd-yolo
+  name: SDD-YOLO
+  type: defense
+  task: g2a_micro_uav_detection
+  version: 0.1.0
+
+io:
+  inputs:
+    - name: rgb_frame
+      type: image/rgb
+      topic: /camera/rgb/image
+  outputs:
+    - name: detections
+      type: bbox_list
+      topic: /defense/sdd_yolo/detections
+
+runtime:
+  python_entrypoint: sdd_yolo.serve:main
+  supports:
+    - cpu
+    - cuda
